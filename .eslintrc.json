@@ -33,6 +33,8 @@
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-one-expression-per-line": "off",
     "no-console": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
     "@typescript-eslint/explicit-function-return-type": [
       "error",
       {
