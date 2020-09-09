@@ -1,8 +1,10 @@
 import styled, { css } from "styled-components";
+import Tooltip from "../Tooltip";
 
 interface Props {
   isFocus: boolean;
   isField: boolean;
+  isError: boolean;
 }
 
 export const ContainerInput = styled.div<Props>`
@@ -14,6 +16,14 @@ export const ContainerInput = styled.div<Props>`
   color: #666360;
   display: flex;
   align-items: center;
+  & + div {
+    margin-top: 8px;
+  }
+  ${(props) =>
+    props.isError &&
+    css`
+      border: 2px solid #c53030;
+    `}
 
   ${(props) =>
     props.isFocus &&
@@ -27,6 +37,7 @@ export const ContainerInput = styled.div<Props>`
       color: #ff9000;
     `}
 
+
   input {
     color: #f4ede8;
     flex: 1;
@@ -39,8 +50,20 @@ export const ContainerInput = styled.div<Props>`
   svg {
     margin-right: 16px;
   }
+`;
 
-  & + div {
-    margin-top: 8px;
+export const Error = styled(Tooltip)`
+  height: 20px;
+  margin-left: 10px;
+  svg {
+    margin: 0px;
+  }
+  span {
+    background: #c53030;
+    color: #f4ede8;
+
+    &::before {
+      border-color: #c53030 transparent;
+    }
   }
 `;
