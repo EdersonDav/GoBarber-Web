@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { shade } from "polished";
 import BackgroundImage from "../../assets/images/sign-in-background.png";
 
@@ -10,11 +10,29 @@ export const Container = styled.div`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  place-content: center;
+  justify-content: center;
   align-items: center;
   width: 100%;
   max-width: 700px;
+`;
 
+const showFormSignin = keyframes`
+  from{
+    opacity: 0;
+    transform: translateX(-50px)
+  }
+  to{
+    opacity: 1;
+    transform: translateX(0)
+  }
+`;
+
+export const AnimationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: ${showFormSignin} 1s;
   form {
     width: 330px;
     margin: 50px 0;

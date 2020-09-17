@@ -1,4 +1,5 @@
 import React from "react";
+import { useTransition } from "react-spring";
 
 import { Container } from "./style";
 
@@ -11,10 +12,19 @@ interface ToastProps {
 }
 
 const Toast: React.FC<ToastProps> = ({ messages }) => {
+  const messagesWithTransition = useTransition(
+    messages,
+    (message) => message.id,
+    {
+      from: { right: "-120%", opacity: 0 },
+      enter: { right: "0%", opacity: 1 },
+      leave: { right: "-120%", opacity: 0 },
+    }
+  );
   return (
     <Container>
-      {messages.map((message) => {
-        return <Toasts key={message.id} message={message} />;
+      {messagesWithTransition.map(({ key, item, props }) => {
+        return <Toasts key={key} message={item} style={props} />;
       })}
     </Container>
   );
